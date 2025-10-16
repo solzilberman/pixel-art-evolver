@@ -1,0 +1,299 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Times New Roman', serif;
+    background: #ffffff;
+    color: #000000;
+    line-height: 1.4;
+    font-size: 14px;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #000000;
+    padding-bottom: 10px;
+}
+
+header h1 {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+header p {
+    font-size: 1rem;
+    font-style: italic;
+}
+
+.controls {
+    background: #f8f8f8;
+    padding: 10px;
+    border: 1px solid #000000;
+    margin-bottom: 15px;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.input-group label {
+    font-weight: bold;
+    color: #000000;
+}
+
+.input-group input {
+    padding: 5px 8px;
+    border: 1px solid #000000;
+    font-size: 14px;
+    min-width: 150px;
+    font-family: 'Courier New', monospace;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #000000;
+    background: #ffffcc;
+}
+
+.input-group button {
+    padding: 5px 12px;
+    border: 1px solid #000000;
+    background: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: 'Times New Roman', serif;
+}
+
+#startBtn {
+    background: #e8f5e8;
+}
+
+#startBtn:hover:not(:disabled) {
+    background: #d4edda;
+}
+
+#stopBtn {
+    background: #f8e8e8;
+}
+
+#stopBtn:hover:not(:disabled) {
+    background: #f5c6cb;
+}
+
+#resetBtn {
+    background: #e8f0f8;
+}
+
+#resetBtn:hover {
+    background: #cce7ff;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.comparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.algorithm-column {
+    background: #ffffff;
+    border: 1px solid #000000;
+    padding: 10px;
+}
+
+.algorithm-column h2 {
+    color: #000000;
+    margin-bottom: 8px;
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: bold;
+    border-bottom: 1px solid #000000;
+    padding-bottom: 5px;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.stat {
+    background: #f8f8f8;
+    padding: 6px;
+    border: 1px solid #cccccc;
+    text-align: center;
+}
+
+.stat .label {
+    display: block;
+    font-size: 0.8rem;
+    color: #000000;
+    margin-bottom: 2px;
+    font-weight: bold;
+}
+
+.stat span:last-child {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #000000;
+    font-family: 'Courier New', monospace;
+}
+
+.chart-container {
+    height: 200px;
+    margin-bottom: 10px;
+    background: #ffffff;
+    border: 1px solid #cccccc;
+    padding: 5px;
+}
+
+.top-words {
+    margin-bottom: 10px;
+}
+
+.top-words h3 {
+    color: #000000;
+    margin-bottom: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.word-list {
+    background: #f8f8f8;
+    border: 1px solid #cccccc;
+    padding: 5px;
+    max-height: 120px;
+    overflow-y: auto;
+}
+
+.word-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3px 6px;
+    margin-bottom: 2px;
+    background: #ffffff;
+    border: 1px solid #dddddd;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+}
+
+.word-item:last-child {
+    margin-bottom: 0;
+}
+
+.word-text {
+    font-weight: bold;
+    color: #000000;
+}
+
+.word-fitness {
+    color: #666666;
+    font-size: 0.8rem;
+}
+
+.code-section h3 {
+    color: #000000;
+    margin-bottom: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.code-box {
+    margin-bottom: 5px;
+}
+
+.code-toggle {
+    width: 100%;
+    padding: 4px 8px;
+    background: #f0f0f0;
+    color: #000000;
+    border: 1px solid #000000;
+    font-size: 0.9rem;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: 'Times New Roman', serif;
+}
+
+.code-toggle:hover {
+    background: #e0e0e0;
+}
+
+.code-content {
+    display: none;
+    background: #f8f8f8;
+    border: 1px solid #cccccc;
+    margin-top: 2px;
+    overflow: hidden;
+}
+
+.code-content.active {
+    display: block;
+}
+
+.code-content pre {
+    margin: 0;
+    padding: 8px;
+    overflow-x: auto;
+}
+
+.code-content code {
+    color: #000000;
+    font-family: 'Courier New', monospace;
+    font-size: 0.8rem;
+    line-height: 1.3;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .comparison {
+        grid-template-columns: 1fr;
+    }
+    
+    .input-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .input-group input {
+        min-width: auto;
+    }
+    
+    .stats {
+        grid-template-columns: 1fr;
+    }
+    
+    header h1 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Remove animations for LaTeX aesthetic */
+.word-item {
+    /* Remove animation */
+}
+
+/* Chart styling */
+canvas {
+    border: none;
+}

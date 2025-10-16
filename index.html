@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genetic Algorithm Demo - EC vs Random Search</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Genetic Algorithm Demo</h1>
+            <p>Evolving strings to match a target word - Evolutionary Computation vs Random Search</p>
+        </header>
+
+        <div class="controls">
+            <div class="input-group">
+                <label for="targetWord">Target Word:</label>
+                <input type="text" id="targetWord" placeholder="Enter target word" value="HELLO">
+                <button id="startBtn">Start Evolution</button>
+                <button id="stopBtn" disabled>Stop</button>
+                <button id="resetBtn">Reset</button>
+            </div>
+        </div>
+
+        <div class="comparison">
+            <div class="algorithm-column">
+                <h2>Evolutionary Computation</h2>
+                
+                <div class="stats">
+                    <div class="stat">
+                        <span class="label">Generation:</span>
+                        <span id="ecGeneration">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="label">Best Fitness:</span>
+                        <span id="ecBestFitness">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="label">Best Word:</span>
+                        <span id="ecBestWord">-</span>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="ecChart"></canvas>
+                </div>
+
+                <div class="top-words">
+                    <h3>Top 10 Best Words</h3>
+                    <div id="ecTopWords" class="word-list"></div>
+                </div>
+
+                <div class="code-section">
+                    <h3>Evolutionary Operators</h3>
+                    
+                    <div class="code-box">
+                        <button class="code-toggle" onclick="toggleCode('crossover')">Crossover</button>
+                        <div id="crossover-code" class="code-content">
+                            <pre><code>function crossover(parent1, parent2) {
+    const point = Math.floor(Math.random() * parent1.length);
+    const child1 = parent1.slice(0, point) + parent2.slice(point);
+    const child2 = parent2.slice(0, point) + parent1.slice(point);
+    return [child1, child2];
+}</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="code-box">
+                        <button class="code-toggle" onclick="toggleCode('mutation')">Mutation</button>
+                        <div id="mutation-code" class="code-content">
+                            <pre><code>function mutate(individual, mutationRate) {
+    let mutated = individual.split('');
+    for (let i = 0; i < mutated.length; i++) {
+        if (Math.random() < mutationRate) {
+            mutated[i] = String.fromCharCode(
+                65 + Math.floor(Math.random() * 26)
+            );
+        }
+    }
+    return mutated.join('');
+}</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="code-box">
+                        <button class="code-toggle" onclick="toggleCode('selection')">Selection</button>
+                        <div id="selection-code" class="code-content">
+                            <pre><code>function tournamentSelection(population, fitness, tournamentSize) {
+    const tournament = [];
+    for (let i = 0; i < tournamentSize; i++) {
+        tournament.push(population[Math.floor(Math.random() * population.length)]);
+    }
+    return tournament.reduce((best, current) => 
+        fitness[current] > fitness[best] ? current : best
+    );
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="algorithm-column">
+                <h2>Random Search</h2>
+                
+                <div class="stats">
+                    <div class="stat">
+                        <span class="label">Iterations:</span>
+                        <span id="rsIterations">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="label">Best Fitness:</span>
+                        <span id="rsBestFitness">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="label">Best Word:</span>
+                        <span id="rsBestWord">-</span>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="rsChart"></canvas>
+                </div>
+
+                <div class="top-words">
+                    <h3>Top 10 Best Words</h3>
+                    <div id="rsTopWords" class="word-list"></div>
+                </div>
+
+                <div class="code-section">
+                    <h3>Random Search Algorithm</h3>
+                    
+                    <div class="code-box">
+                        <button class="code-toggle" onclick="toggleCode('random-search')">Random Search</button>
+                        <div id="random-search-code" class="code-content">
+                            <pre><code>function randomSearch(target, iterations) {
+    let bestWord = '';
+    let bestFitness = 0;
+    
+    for (let i = 0; i < iterations; i++) {
+        const randomWord = generateRandomWord(target.length);
+        const fitness = calculateFitness(randomWord, target);
+        
+        if (fitness > bestFitness) {
+            bestFitness = fitness;
+            bestWord = randomWord;
+        }
+    }
+    
+    return { bestWord, bestFitness };
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="src/app.js"></script>
+</body>
+</html>
