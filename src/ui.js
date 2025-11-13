@@ -181,7 +181,6 @@ export function initializeAceEditors() {
         }
         
         editor.setValue(defaultCode[id], -1);
-        console.log(editor.OptionsProvider);
         editor.setOptions({
             fontSize: "12px",
             showPrintMargin: false,
@@ -224,17 +223,17 @@ export function updateECDisplay(ecAlgorithm, ecChart, elements) {
     ecTopImages.innerHTML = '';
     ecAlgorithm.topImages.forEach(([image, fitness]) => {
         const imageItem = document.createElement('div');
-        imageItem.className = 'image-item';
+        imageItem.className = 'image-grid-item';
         
         const canvas = document.createElement('canvas');
-        canvas.width = 40;
-        canvas.height = 40;
+        canvas.width = 48;
+        canvas.height = 48;
         drawPixelArt(canvas, image);
         
         const fitnessSpan = document.createElement('span');
         fitnessSpan.className = 'image-fitness';
-        const itemRatio = (fitness / MAX_FITNESS).toFixed(3);
-        fitnessSpan.textContent = `${itemRatio} (${fitness}/${MAX_FITNESS})`;
+        const itemRatio = (fitness / MAX_FITNESS).toFixed(2);
+        fitnessSpan.textContent = itemRatio;
         
         imageItem.appendChild(canvas);
         imageItem.appendChild(fitnessSpan);
@@ -260,17 +259,17 @@ export function updateRSDisplay(rsAlgorithm, rsChart, elements) {
     rsTopImages.innerHTML = '';
     rsAlgorithm.topImages.forEach(([image, fitness]) => {
         const imageItem = document.createElement('div');
-        imageItem.className = 'image-item';
+        imageItem.className = 'image-grid-item';
         
         const canvas = document.createElement('canvas');
-        canvas.width = 40;
-        canvas.height = 40;
+        canvas.width = 48;
+        canvas.height = 48;
         drawPixelArt(canvas, image);
         
         const fitnessSpan = document.createElement('span');
         fitnessSpan.className = 'image-fitness';
-        const itemRatio = (fitness / MAX_FITNESS).toFixed(3);
-        fitnessSpan.textContent = `${itemRatio} (${fitness}/${MAX_FITNESS})`;
+        const itemRatio = (fitness / MAX_FITNESS).toFixed(2);
+        fitnessSpan.textContent = itemRatio;
         
         imageItem.appendChild(canvas);
         imageItem.appendChild(fitnessSpan);

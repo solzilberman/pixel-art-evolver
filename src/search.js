@@ -87,7 +87,7 @@ export class GeneticAlgorithm {
         }
 
         imageFitnessPairs.sort((a, b) => b[1] - a[1]);
-        this.topImages = imageFitnessPairs.slice(0, 10);
+        this.topImages = imageFitnessPairs.slice(0, 12);
     }
 
     tournamentSelection() {
@@ -202,7 +202,7 @@ export class RandomSearch {
             return [stringToImage(key), fitness];
         });
         imageFitnessPairs.sort((a, b) => b[1] - a[1]);
-        this.topImages = imageFitnessPairs.slice(0, 10);
+        this.topImages = imageFitnessPairs.slice(0, 12);
     }
 
     runIteration() {
