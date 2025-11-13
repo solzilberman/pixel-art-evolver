@@ -84,9 +84,9 @@ export function initializeCharts() {
 export function initializeAceEditors() {
     const defaultCode = {
         parameters: `{
-    "populationSize": 150,
+    "populationSize": 500,
     "mutationRate": 0.05,
-    "tournamentSize": 3
+    "tournamentSize": 5
 }`,
         crossover: `function crossover(parent1, parent2) {
         const crossoverPoint = Math.floor(Math.random() * 64);

@@ -18,31 +18,40 @@
             <p>Generating 8x8 pixel art to match a target image - EC vs Random Search</p>
         </header>
 
-        <div class="controls">
-            <div class="input-group">
-                <label for="targetImage">Target Image:</label>
-                <select id="targetImage">
-                    <option value="heart">Heart</option>
-                    <option value="frog">Frog</option>
-                    <option value="smiley">Smiley Face</option>
-                    <option value="cross">Cross</option>
-                    <option value="arrow">Arrow</option>
-                    <option value="checker">Checkerboard</option>
-                </select>
-                <button id="startBtn">Start Evolution</button>
-                <button id="pauseBtn" disabled>Pause</button>
-                <button id="stopBtn" disabled>Stop</button>
-                <button id="resetBtn">Reset</button>
-            </div>
-            <div class="target-display">
-                <h3>Target Image:</h3>
-                <canvas id="targetCanvas" width="160" height="160"></canvas>
-            </div>
-        </div>
+        <div class="main-layout">
+            <div class="sidebar">
+                <div class="controls">
+                    <h2>Settings</h2>
+                    
+                    <div class="control-group">
+                        <label for="targetImage">Target Image:</label>
+                        <select id="targetImage">
+                            <option value="heart">Heart</option>
+                            <option value="frog">Frog</option>
+                            <option value="smiley">Smiley Face</option>
+                            <option value="cross">Cross</option>
+                            <option value="arrow">Arrow</option>
+                            <option value="checker">Checkerboard</option>
+                        </select>
+                    </div>
 
-        <div class="comparison">
-            <div class="algorithm-column">
-                <h2>Evolutionary Computation</h2>
+                    <div class="target-display">
+                        <h3>Target Image</h3>
+                        <canvas id="targetCanvas" width="160" height="160"></canvas>
+                    </div>
+
+                    <div class="button-group">
+                        <button id="startBtn">Start Evolution</button>
+                        <button id="pauseBtn" disabled>Pause</button>
+                        <button id="stopBtn" disabled>Stop</button>
+                        <button id="resetBtn">Reset</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comparison">
+                <div class="algorithm-column">
+                    <h2>Evolutionary Computation</h2>
                 
                 <div class="stats">
                     <div class="stat">
@@ -143,6 +152,7 @@
                         <div id="random-search-editor" class="ace-editor"></div>
                     </div>
                 </div>
+            </div>
             </div>
         </div>
     </div>

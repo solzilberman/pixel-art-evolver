@@ -9,7 +9,7 @@ export function stringToImage(str) {
 }
 
 export class GeneticAlgorithm {
-    constructor(targetImage, populationSize = 150) {
+    constructor(targetImage, populationSize = 500) {
         this.targetImage = targetImage;
         this.populationSize = populationSize;
         this.population = [];
@@ -20,7 +20,7 @@ export class GeneticAlgorithm {
         this.fitnessHistory = [];
         this.topImages = [];
         this.mutationRate = 0.05;
-        this.tournamentSize = 3;
+        this.tournamentSize = 5;
 
         this.initializePopulation();
     }
