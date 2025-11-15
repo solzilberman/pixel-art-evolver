@@ -15,7 +15,7 @@
     <div class="container">
         <header>
             <h1>Evolutionary Computation Demo</h1>
-            <p>Generating 8x8 pixel art to match a target image - EC vs Random Search</p>
+            <!-- <p>Generating 8x8 pixel art to match a target image - EC vs Random Search</p> -->
         </header>
 
         <div class="main-layout">
@@ -26,9 +26,9 @@
                     <div class="control-group">
                         <label for="targetImage">Target Image:</label>
                         <select id="targetImage">
-                            <option value="heart">Heart</option>
                             <option value="frog">Frog</option>
                             <option value="smiley">Smiley Face</option>
+                            <option value="heart">Heart</option>
                             <option value="cross">Cross</option>
                             <option value="arrow">Arrow</option>
                             <option value="checker">Checkerboard</option>
@@ -78,8 +78,11 @@
                 </div>
 
                 <div class="code-section">
-                    <h3>Evolutionary Operators (Live Code)</h3>
+                    <h3 class="collapsible-header" onclick="toggleCodeSection(this)">
+                        <span class="toggle-arrow">▶</span> Evolutionary Operators
+                    </h3>
                     
+                    <div class="code-content" style="display: none;">
                     <div class="code-box">
                         <div class="code-header">
                             <span>GA Parameters</span>
@@ -110,6 +113,7 @@
                             <button class="apply-btn" onclick="applyCode('selection')">Apply</button>
                         </div>
                         <div id="selection-editor" class="ace-editor"></div>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -142,8 +146,11 @@
                 </div>
 
                 <div class="code-section">
-                    <h3>Random Search Algorithm (Live Code)</h3>
+                    <h3 class="collapsible-header" onclick="toggleCodeSection(this)">
+                        <span class="toggle-arrow">▶</span> Random Search Algorithm
+                    </h3>
                     
+                    <div class="code-content" style="display: none;">
                     <div class="code-box">
                         <div class="code-header">
                             <span>Random Search Function</span>
@@ -151,12 +158,27 @@
                         </div>
                         <div id="random-search-editor" class="ace-editor"></div>
                     </div>
+                    </div>
                 </div>
             </div>
             </div>
         </div>
     </div>
 
+    <script>
+        function toggleCodeSection(header) {
+            const codeContent = header.nextElementSibling;
+            const arrow = header.querySelector('.toggle-arrow');
+            
+            if (codeContent.style.display === 'none') {
+                codeContent.style.display = 'block';
+                arrow.textContent = '▼';
+            } else {
+                codeContent.style.display = 'none';
+                arrow.textContent = '▶';
+            }
+        }
+    </script>
     <script type="module" src="src/app.js"></script>
 </body>
 </html>

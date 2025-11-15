@@ -55,54 +55,34 @@ function applyParameters(operatorType) {
     
     if (operatorType === 'parameters') {
         const params = JSON.parse(code);
-        const validationMessages = [];
-        
-        if (params.populationSize !== undefined) {
-            if (!(params.populationSize > 0 && Number.isInteger(params.populationSize))) {
-                throw new Error('Population size must be a positive integer');
-            }
-            validationMessages.push(`✓ Population size: ${params.populationSize}`);
-        }
-        
-        if (params.mutationRate !== undefined) {
-            if (!(params.mutationRate >= 0 && params.mutationRate <= 1)) {
-                throw new Error('Mutation rate must be between 0 and 1');
-            }
-            validationMessages.push(`✓ Mutation rate: ${params.mutationRate}`);
-        }
-        
-        if (params.tournamentSize !== undefined) {
-            if (!(params.tournamentSize > 0 && Number.isInteger(params.tournamentSize))) {
-                throw new Error('Tournament size must be a positive integer');
-            }
-            validationMessages.push(`✓ Tournament size: ${params.tournamentSize}`);
-        }
         
         if (ecAlgorithm) {
-            if (params.mutationRate !== undefined) ecAlgorithm.mutationRate = params.mutationRate;
-            if (params.tournamentSize !== undefined) ecAlgorithm.tournamentSize = params.tournamentSize;
-            alert('Parameters validated and applied!\n\n' + validationMessages.join('\n') + '\n\nNote: Population size will apply on next evolution run.');
-        } else {
-            alert('Parameters validated!\n\n' + validationMessages.join('\n') + '\n\nThese will be applied when you start evolution.');
+            ecAlgorithm.mutationRate = params.mutationRate ? params.mutationRate : ecAlgorithm.mutationRate;
+            ecAlgorithm.tournamentSize = params.tournamentSize ? params.tournamentSize : ecAlgorithm.tournamentSize;
         }
-        
         return;
     }
     
     const func = new Function('return ' + code)();
     
-    if (operatorType === 'crossover' && ecAlgorithm) {
-        ecAlgorithm.crossover = func;
-    } else if (operatorType === 'mutation' && ecAlgorithm) {
-        ecAlgorithm.mutate = function(individual) {
-            return func(individual, this.mutationRate);
-        };
-    } else if (operatorType === 'selection' && ecAlgorithm) {
-        ecAlgorithm.tournamentSelection = function() {
-            return func(this.population, this.fitness, this.tournamentSize);
-        };
-    } else if (operatorType === 'random-search' && rsAlgorithm) {
-        rsAlgorithm.randomSearch = func;
+    if (ecAlgorithm) {
+        if (operatorType === 'crossover') {
+            ecAlgorithm.crossover = func;
+        } else if (operatorType === 'mutation') {
+            ecAlgorithm.mutate = function(individual) {
+                return func(individual, this.mutationRate);
+            };
+        } else if (operatorType === 'selection') {
+            ecAlgorithm.tournamentSelection = function() {
+                return func(this.population, this.fitness, this.tournamentSize);
+            };
+        }
+    }
+    
+    if (rsAlgorithm) {
+        if (operatorType === 'random-search') {
+            rsAlgorithm.randomSearch = func;
+        }
     }
 }
 

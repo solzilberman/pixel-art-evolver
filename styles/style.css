@@ -293,6 +293,29 @@ button:disabled {
     font-weight: bold;
 }
 
+.collapsible-header {
+    cursor: pointer;
+    user-select: none;
+    padding: 5px;
+    background: #f0f0f0;
+    border: 1px solid #000000;
+    transition: background 0.2s;
+}
+
+.collapsible-header:hover {
+    background: #e0e0e0;
+}
+
+.toggle-arrow {
+    display: inline-block;
+    font-size: 0.8rem;
+    transition: transform 0.2s;
+}
+
+.code-content {
+    margin-top: 5px;
+}
+
 .code-box {
     margin-bottom: 8px;
     border: 1px solid #000000;
