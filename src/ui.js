@@ -180,7 +180,7 @@ export function initializeAceEditors() {
             editor.session.setMode("ace/mode/javascript");
         }
         
-        editor.setValue(defaultCode[id], -1);
+        editor.setValue(defaultCode[id], "HELLO");
         editor.setOptions({
             fontSize: "12px",
             showPrintMargin: false,
