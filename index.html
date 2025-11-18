@@ -173,6 +173,14 @@
             if (codeContent.style.display === 'none') {
                 codeContent.style.display = 'block';
                 arrow.textContent = '▼';
+                
+                setTimeout(() => {
+                    const editors = codeContent.querySelectorAll('.ace-editor, .ace-editor-small');
+                    editors.forEach(editorElement => {
+                        const editor = ace.edit(editorElement);
+                        editor.resize();
+                    });
+                }, 50);
             } else {
                 codeContent.style.display = 'none';
                 arrow.textContent = '▶';
