@@ -20,7 +20,7 @@ export class GeneticAlgorithm {
         this.fitnessHistory = [];
         this.topImages = [];
         this.mutationRate = 0.05;
-        this.tournamentSize = 5;
+        this.tournamentSize = 7;
 
         this.initializePopulation();
     }

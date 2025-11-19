@@ -1,9 +1,9 @@
 export const COLOR_PALETTE = [
-    '#FFFFFF', // 0: White
-    '#000000', // 1: Black
-    '#FF0000', // 2: Red
-    '#00FF00', // 3: Green
-    '#0000FF', // 4: Blue
+    '#FFFFFF', // 0: white
+    '#000000', // 1: black
+    '#FF0000', // 2: red
+    '#00FF00', // 3: green
+    '#0000FF', // 4: blue
     '#FFFF00', // 5: Yellow
 ];
 
